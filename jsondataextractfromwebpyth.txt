@@ -1,0 +1,22 @@
+import urllib
+from urllib.request import urlopen
+import ssl
+import json
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+url = input("Enter location: ")
+address = urlopen(url, context=ctx)
+data = address.read()
+total = 0
+while True:
+	info = json.loads(data)
+	info = info["comments"]
+	for item in info:
+		total += int(item["count"])
+	print("Final sum: ", total)
+	break
+rakesh@promtcloud.com
