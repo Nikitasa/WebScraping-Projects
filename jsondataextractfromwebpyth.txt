@@ -19,4 +19,3 @@ while True:
 		total += int(item["count"])
 	print("Final sum: ", total)
 	break
-rakesh@promtcloud.com
